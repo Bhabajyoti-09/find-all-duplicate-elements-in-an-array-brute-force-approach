@@ -1,0 +1,32 @@
+#include <iostream>
+
+void findDuplicates(const int arr[], int size) {
+    bool foundDuplicate = false;
+
+    // Compare each element with every other element
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = i + 1; j < size; j++) {
+            if (arr[i] == arr[j]) {
+                // Print the duplicate element
+                std::cout << arr[i] << " ";
+                foundDuplicate = true;
+                break; // Break inner loop to avoid duplicates of duplicates
+            }
+        }
+    }
+
+    if (!foundDuplicate) {
+        std::cout << "No duplicates found.";
+    }
+
+    std::cout << std::endl;
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 2, 5, 6, 3, 7, 7};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    findDuplicates(arr, size);
+
+    return 0;
+}
